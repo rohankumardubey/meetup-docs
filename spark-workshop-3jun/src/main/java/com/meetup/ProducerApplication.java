@@ -14,11 +14,13 @@ public class ProducerApplication implements ApplicationListener<ContextRefreshed
 	@Autowired
 	Producer producer;
 	private static String topicName;
-	private static String path;
+	private static String numberOfEventsPath;
+	private static String filePath;
 
 	public static void main(String[] args) {
 		topicName = args[0];
-		path=args[1];
+		numberOfEventsPath=args[1];
+		filePath=args[2];
 		SpringApplication.run(ProducerApplication.class, args);
 
 
@@ -27,6 +29,6 @@ public class ProducerApplication implements ApplicationListener<ContextRefreshed
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
 
-		producer.produce(topicName,path);
+		producer.produce(topicName,numberOfEventsPath,filePath);
 	}
 }

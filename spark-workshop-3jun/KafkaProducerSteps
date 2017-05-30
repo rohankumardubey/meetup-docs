@@ -16,14 +16,19 @@ bin/kafka-server-start.sh config/server.properties
 
 bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic {topicname}
 
+5) Download the Java code from Git repo
+
+https://github.com/teamclairvoyant/meetup-docs/tree/master/spark-workshop-3jun
+
 6) Create a file (number of events file )and put a number
 
 The number in this file will be used by kafka producer. Producer will generate exactly this number of events every 10 seconds.
 
-5) Download the Java code from Git repo
+7) Use the file sample_data.tsv as sample data file .
 
+The file is having data in tab seprated format with columns as
+SELECT ts, ip, url, swid, city, country, state FROM testdata
 
+8) Build the project and run the jar
 
-6) Build the project and run the jar
-
-java -jar Producer-0.0.1-SNAPSHOT.jar {topicname} {path of number of events file}
+java -jar Producer-0.0.1-SNAPSHOT.jar {topicname} {path of number of events file} {sample data file path}
