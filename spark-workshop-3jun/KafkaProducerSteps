@@ -1,0 +1,29 @@
+Kafka Producer steps for Spark workshop
+
+1) Download the kafka from below link and unzip it.
+
+http://kafka.apache.org/downloads
+
+2) Go to kafka folder and Start zoopkeeper
+
+bin/zookeeper-server-start.sh config/zookeeper.properties
+
+3) Once zookeeper starts, Start Kafka using below command
+
+bin/kafka-server-start.sh config/server.properties
+
+4) Create topic
+
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic {topicname}
+
+6) Create a file (number of events file )and put a number
+
+The number in this file will be used by kafka producer. Producer will generate exactly this number of events every 10 seconds.
+
+5) Download the Java code from Git repo
+
+
+
+6) Build the project and run the jar
+
+java -jar Producer-0.0.1-SNAPSHOT.jar {topicname} {path of number of events file}
